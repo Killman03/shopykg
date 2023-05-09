@@ -1,0 +1,14 @@
+{% extends 'store/base.html' %}
+
+{% block title %> Каталог {% endblock %}
+
+{% block content %}
+
+<ul>
+    {% for i in products %}
+    <li>
+        <h2>{{ products.title }}</h2>
+        <p>{{ products.content }}</p>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,25 @@
+.wrapper_grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    grid-auto-rows: 500px;
+    max-width: 1240px;
+}
+
+.card_image{
+    margin-top: 70px;
+}
+
+.card_image img{
+    width: 400px;
+    height: 440px;
+}
+
+.text_cat{
+    margin-top: 25px;
+}
+
+.col_md_4{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

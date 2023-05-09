@@ -1,0 +1,40 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% load store_tags %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <main>
+        <!-- thumbnails -->
+        <section class="thumbnails container">
+            {% include 'store/slider.html' %}
+        </section>
+        <!-- content -->
+        <section class="container">
+            <div class="combo">
+                <img src="{% static 'store/images/combo.png' %}">
+                {% for combo in
+            </div>
+        </section>
+        <section class="container">
+            {% getarts as hits %}
+            <div>
+                <img src="{% static 'store/images/hit.png' %}">
+            </div>
+            <div class="hit">
+                {% for a in hits %}
+                <div class="hit_item" style="height: 661px;">
+                    <div class="hit_item_pic">
+                            <img src="{{ a.image.url }}" class="hit_photo">
+                            <a href="#" class="hit_link"></a>
+                    </div>
+                    <h6 class="hit_item_titile">
+                        <a href="#" title="{{ a.title }}"></a>
+                    </h6>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+{% endblock %}
