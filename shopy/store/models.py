@@ -54,7 +54,7 @@ class Under_category(models.Model):
         verbose_name_plural = 'Подкатегории'
         ordering = ['updated_at']
 
-class Articles(models.Model):
+class Products(models.Model):
     under_category = models.ForeignKey(Under_category, default=1, on_delete=models.PROTECT)
     title = models.CharField('Название', max_length=30, null=False, blank=False)
     slug = models.SlugField(max_length=150, unique=True, db_index=True, verbose_name='URL')
@@ -64,10 +64,12 @@ class Articles(models.Model):
     original_price = models.IntegerField('Цена', null=True, blank=False)
     selling_price = models.IntegerField('Цена по скидке', null=True, blank=True)
     quantity = models.IntegerField('Количество', null=True, blank=True)
-    trending = models.BooleanField(default=False, help_text="0=default, 1=Trending")
     tag = models.CharField('Teг', max_length=150, default='#', null=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    is_trending = models.BooleanField('Хит', default=False)
+    is_best = models.BooleanField('Лучшие товары', default=False)
+    is_new = models.BooleanField('Новинки', default=False)
     is_published = models.BooleanField('Опубликовать', default=True)
 
     def __str__(self):
@@ -80,12 +82,3 @@ class Articles(models.Model):
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
         ordering = ['updated_at']
-
-
-class Articles_status(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return f'{self.name}'
-
-# Create your models here.

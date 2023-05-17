@@ -20,14 +20,48 @@
 
 .combo{
     margin-top: 110px;
+    margin-bottom: 77px;
 }
 
-.hit{
-    padding-top: 69px;
+.combo_box{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 23px;
+	grid-row-gap: 79px;
+}
+
+.hit_title{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.hit_box{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 23px;
 }
 
 .hit_photo{
-    padding: 0px 16px;
-    width: 464px;
     height: 464px;
+    margin-bottom: 10px;
+}
+
+.hit_item_text{
+    color: black;
+    text-decoration: none;
+}
+.hit_item_text_price{
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.hit_item_text_title{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 45px;
+    text-decoration: none;
+    color: black;
 }

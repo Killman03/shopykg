@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseNotFound, HttpResponse
 from django.views.generic import ListView
+from django.views.generic import DetailView
 from .models import *
 
 menu_header = [{'title': "Доставка", 'url_name': 'delivery'},
@@ -23,24 +24,46 @@ class Collections(ListView):
         context['title'] = 'Коллекция - ' + str(context['collections'][0].category)
 
         return context
-
     def get_queryset(self):
-        return Under_category.objects.filter(category__slug=self.kwargs['slug'], is_published=True)
+        return Under_category.objects.filter(category__slug=self.kwargs['collect_slug'], is_published=True)
 
-def home(request):
-    return render(request, 'store/home.html', {'menu': menu_footer})
+class Catalog(ListView):
+    model = Category
+    template_name = 'store/catalog.html'
+    context_object_name = 'category'
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Каталог'
+        return context
+    def get_queryset(self):
+        return Category.objects.filter(under_category__slug=self.kwargs['cat_slug'], is_published=True)
 
-def catalog(request):
-    return render(request, 'store/catalog.html')
+class HomePage(ListView):
+    model = Products
+    template_name = 'store/home.html'
+    context_object_name = 'products'
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Главная страница'
+        context['category'] = Under_category.objects.get(title='Комбо')
+        return context
+    def get_queryset(self):
+        return Products.objects.filter(is_published=True)
 
-def show_product(request, product_slug):
-    product = get_object_or_404(Articles, slug=product_slug)
-    context = {'product': product,
-               'menu': menu,
-               'title': product.title,
-               'category_name': product.category}
 
-    return render(request, 'store/products/index.html', context=context)
+class ShowProduct(DetailView):
+    model = Products
+    template_name = 'store/products/index.html'
+    slut_url_kwarg = 'product_slug'
+
+# def show_product(request, product_slug):
+#     product = get_object_or_404(Articles, slug=product_slug)
+#     context = {'product': product,
+#                'menu': menu,
+#                'title': product.title,
+#                'category_name': product.category}
+#
+#     return render(request, 'store/products/index.html', context=context)
 
 # def collections(request, collections_slug):
 #     collections = get_object_or_404(Under_category, slug=collections_slug)

@@ -1,14 +1,19 @@
 {% extends 'store/base.html' %}
-
-{% block title %> Каталог {% endblock %}
+{% load static %}
+{% load store_tags %}
 
 {% block content %}
-
-<ul>
-    {% for i in products %}
-    <li>
-        <h2>{{ products.title }}</h2>
-        <p>{{ products.content }}</p>
-    </li>
-</ul>
-{% endblock %}
+<div class="container">
+    <div class="text_cat">
+        <h1>Каталог</h1>
+    <div class="wrapper_grid">
+        {% for item in collections %}
+            <div class="card_image">
+                <img src="{{ item.category_image.url }}" alt="card image">
+                <h4 class="collection_name">{{ item.title }}</h4>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+</div>
+{% endblock%}

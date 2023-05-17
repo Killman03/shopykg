@@ -2,8 +2,6 @@
 {% load static %}
 {% load store_tags %}
 
-{% block title %}Главная страница{% endblock %}
-
 {% block content %}
     <main>
         <!-- thumbnails -->
@@ -14,25 +12,40 @@
         <section class="container">
             <div class="combo">
                 <img src="{% static 'store/images/combo.png' %}">
-                {% for combo in
+            </div>
+            <div class="combo_box">
+                {% for product in products %}
+                    {% if product.under_category == category %}
+                    <div class="combo_item">
+                        <div class="combo_item_pic">
+                            <img src="{{ product.image.url }}" class="combo_photo">
+                            <a href="#" class="hit_link"></a>
+                        </div>
+                        <h6 class="combo_item_title">
+                            <a href="#" title="{{ product.title }}"></a>
+                        </h6>
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </section>
         <section class="container">
-            {% getarts as hits %}
-            <div>
+            <div class="hit_title">
                 <img src="{% static 'store/images/hit.png' %}">
             </div>
-            <div class="hit">
-                {% for a in hits %}
-                <div class="hit_item" style="height: 661px;">
-                    <div class="hit_item_pic">
-                            <img src="{{ a.image.url }}" class="hit_photo">
-                            <a href="#" class="hit_link"></a>
+            <div class="hit_box">
+                {% for product in products %}
+                    {% if product.is_trending %}
+                    <div class="hit_item">
+                        <div class="hit_item_pic">
+                                <img src="{{ product.image.url }}" class="hit_photo">
+                        </div>
+                        <div class="hit_item_text">
+                            <h4 class="hit_item_text_price">{{ product.original_price }} сом</h4>
+                            <a href="#" class="hit_item_text_title">{{ product.title}}</a>
+                        </div>
                     </div>
-                    <h6 class="hit_item_titile">
-                        <a href="#" title="{{ a.title }}"></a>
-                    </h6>
-                </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </section>
