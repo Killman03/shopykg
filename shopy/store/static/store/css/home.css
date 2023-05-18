@@ -38,8 +38,10 @@
 
 .hit_box{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 0.7fr);
     grid-gap: 23px;
+    box-sizing: border-box;
+    max-width: 1240px;
 }
 
 .hit_photo{
@@ -51,6 +53,7 @@
     color: black;
     text-decoration: none;
 }
+
 .hit_item_text_price{
     font-size: 24px;
     text-align: center;
@@ -64,4 +67,87 @@
     margin-top: 45px;
     text-decoration: none;
     color: black;
+}
+
+.best_title{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.best_box{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 23px;
+}
+
+.best_photo{
+    height: 464px;
+    margin-bottom: 10px;
+}
+
+.best_item_text{
+    color: black;
+    text-decoration: none;
+}
+
+.best_item_text_price{
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.best_item_text_title{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 45px;
+    text-decoration: none;
+    color: black;
+}
+
+.new_title{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.new_box{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 23px;
+}
+
+.new_photo{
+    height: 464px;
+    margin-bottom: 10px;
+}
+
+.new_item_text{
+    color: black;
+    text-decoration: none;
+}
+
+.new_item_text_price{
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.new_item_text_title{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 45px;
+    text-decoration: none;
+    color: black;
+}
+
+.set_title{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.set_box{
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+	grid-row-gap: 35px;
 }

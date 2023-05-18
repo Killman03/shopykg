@@ -49,5 +49,54 @@
                 {% endfor %}
             </div>
         </section>
+        <section class="container">
+            <div class="best_title">
+                <img src="{% static 'store/images/best_product.png' %}">
+            </div>
+            <div class="best_box">
+                {% for product in products %}
+                    {% if product.is_best %}
+                    <div class="best_item">
+                        <div class="best_item_pic">
+                                <img src="{{ product.image.url }}" class="hit_photo">
+                        </div>
+                        <div class="best_item_text">
+                            <h4 class="best_item_text_price">{{ product.original_price }} сом</h4>
+                            <a href="#" class="best_item_text_title">{{ product.title}}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        <section class="container">
+            <div class="set_title">
+                <img src="{% static 'store/images/present_set.png' %}">
+            </div>
+            <div class="set_box">
+                <img class="set_box_one" src="{% static 'store/images/present_set_one.png' %}">
+                <img src="{% static 'store/images/present_set_two.png' %}" class="present_set_two">
+            </div>
+        </section>
+        <section class="container">
+            <div class="new_title">
+                <img src="{% static 'store/images/news.png' %}">
+            </div>
+            <div class="new_box">
+                {% for product in products %}
+                    {% if product.is_new %}
+                    <div class="new_item">
+                        <div class="new_item_pic">
+                                <img src="{{ product.image.url }}" class="hit_photo">
+                        </div>
+                        <div class="new_item_text">
+                            <h4 class="new_item_text_price">{{ product.original_price }} сом</h4>
+                            <a href="#" class="best_item_text_title">{{ product.title}}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
     </main>
 {% endblock %}
