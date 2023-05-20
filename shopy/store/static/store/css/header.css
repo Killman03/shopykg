@@ -20,6 +20,11 @@ header{
 
 .nav_logo{
     padding: 0px 0px 0px 40px;
+    transition: .5s;
+}
+
+header .nav_log:hover{
+    transform: scale(1.2);
 }
 
 .nav_sq{
@@ -32,6 +37,35 @@ header{
 
 .search{
     padding-bottom: 10px;
+}
+
+nav div button{
+    float: left;
+}
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 0;
+    background-color: rgba(var(--bs-tertiary-bg-rgb),var(--bs-bg-opacity))!important;
+}
+
+.fixed-top {
+    position: fixed;
+    z-index: 1030;
+    padding: 0px;
+}
+
+.container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.offcanvas.offcanvas-end {
+    top: 0;
+    left: 0;
+    width: var(--bs-offcanvas-width);
+    border-left: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
+    transform: translateX(100%);
 }
 
 form{

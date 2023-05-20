@@ -41,7 +41,7 @@ class Catalog(ListView):
 class HomePage(ListView):
     model = Products
     template_name = 'store/home.html'
-    context_object_name = 'products'
+    context_object_name = 'bootstrap'
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Главная страница'
@@ -53,7 +53,7 @@ class HomePage(ListView):
 
 class ShowProduct(DetailView):
     model = Products
-    template_name = 'store/products/index.html'
+    template_name = 'store/bootstrap/index.html'
     slut_url_kwarg = 'product_slug'
 
 # def show_product(request, product_slug):
@@ -63,7 +63,7 @@ class ShowProduct(DetailView):
 #                'title': product.title,
 #                'category_name': product.category}
 #
-#     return render(request, 'store/products/index.html', context=context)
+#     return render(request, 'store/bootstrap/index.html', context=context)
 
 # def collections(request, collections_slug):
 #     collections = get_object_or_404(Under_category, slug=collections_slug)

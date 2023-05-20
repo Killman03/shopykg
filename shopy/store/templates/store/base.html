@@ -26,37 +26,38 @@
 </head>
 <body>
     <header>
-        <!-- navbar -->
-        <nav class="nav container">
-                <section class="nav_left_sec">
-                    <img src="{% static 'store/images/logo_text.png' %}" alt="logo" class="nav_logo">
-                    <img src="{% static 'store/images/rectangle.png' %}" alt="sq" class="nav_sq">
-                    <div class="overlay"></div>
-                    <ul class="nav_links">
-                    </ul>
-                </section>
-                <section class="search">
-                    <form action="" method="get">
-                    <input placeholder="поиск..." type="text">
-                        <button type="submit" class="search_button">
-                            найти
-                        </button>
-                    </form>
-                </section>
-                <!-- cart -->
-                <section class="nav_right_sec">
-                    <div class="cart_container">
-                        <button class="cart_btn" id="truck">
-                            <img src="{% static 'store/images/truck.png' %}">
-                            <span class="indicator">Доставка</span>
-                        </button>
-                        <button class="cart_btn">
-                            <img src="{% static 'store/images/bin.png' %}">
-                            <span class="indicator">Корзина</span>
-                        </button>
-                    </div>
-                </section>
-        </nav>
+        {% include 'store/bootstrap/navcatalog.html' %}
+<!--        &lt;!&ndash; navbar &ndash;&gt;-->
+<!--        <nav class="nav container">-->
+<!--                <section class="nav_left_sec">-->
+<!--                    <img src="{% static 'store/images/logo_text.png' %}" alt="logo" class="nav_logo">-->
+<!--                    <img src="{% static 'store/images/rectangle.png' %}" alt="sq" class="nav_sq">-->
+<!--                    <div class="overlay"></div>-->
+<!--                    <ul class="nav_links">-->
+<!--                    </ul>-->
+<!--                </section>-->
+<!--                <section class="search">-->
+<!--                    <form action="" method="get">-->
+<!--                    <input placeholder="поиск..." type="text">-->
+<!--                        <button type="submit" class="search_button">-->
+<!--                            найти-->
+<!--                        </button>-->
+<!--                    </form>-->
+<!--                </section>-->
+<!--                &lt;!&ndash; cart &ndash;&gt;-->
+<!--                <section class="nav_right_sec">-->
+<!--                    <div class="cart_container">-->
+<!--                        <button class="cart_btn" id="truck">-->
+<!--                            <img src="{% static 'store/images/truck.png' %}">-->
+<!--                            <span class="indicator">Доставка</span>-->
+<!--                        </button>-->
+<!--                        <button class="cart_btn">-->
+<!--                            <img src="{% static 'store/images/bin.png' %}">-->
+<!--                            <span class="indicator">Корзина</span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </section>-->
+<!--        </nav>-->
     </header>
     {% block content %}
     {% endblock %}
