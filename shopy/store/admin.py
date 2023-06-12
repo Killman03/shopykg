@@ -17,10 +17,10 @@ class UndercategoryAdmin(admin.ModelAdmin):
 
 class ProductsAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'original_price', 'selling_price', 'is_published', 'slug', 'is_trending', 'is_new',
-                    'is_best', 'under_category']
+                    'is_best', 'under_category', 'image']
     list_filter = ['is_published', 'under_category']
     search_fields = ['title', 'specification']
-    list_editable = ['is_published', 'under_category']
+    list_editable = ['is_published', 'under_category', 'image']
     prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(Category, CategoryAdmin)

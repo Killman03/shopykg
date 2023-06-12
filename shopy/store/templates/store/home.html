@@ -42,7 +42,7 @@
                         </div>
                         <div class="hit_item_text">
                             <h4 class="hit_item_text_price">{{ product.original_price }} сом</h4>
-                            <a href="#" class="hit_item_text_title">{{ product.title}}</a>
+                            <a href="{{ product.get_absolute_url }}" class="hit_item_text_title">{{ product.title}}</a>
                         </div>
                     </div>
                     {% endif %}

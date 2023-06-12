@@ -11,5 +11,5 @@ urlpatterns = [
     path('aboutus/', aboutus, name='aboutus'),
     path('collections/<slug:collect_slug>/', Collections.as_view(), name='collection'),
     path('collections/<slug:slug>/<slug:cat_slug>/', Catalog.as_view(), name='catalog'),
-    path('collections/<slug:slug>/<slug:cat_slug>/<slug:product_slug>/', ShowProduct.as_view(), name='product'),
+    path('product/<slug:product_slug>/', ShowProduct.as_view(), name='product'),
 ]

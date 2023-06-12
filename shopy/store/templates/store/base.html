@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/home.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/collections.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/show_product.css' %}">
     <link rel="stylesheet" href="{% static 'store/js/script.js' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://allfont.ru/allfont.css?fonts=ds-down-cyr" rel="stylesheet" type="text/css" />
@@ -27,44 +28,13 @@
 <body>
     <header>
         {% include 'store/bootstrap/navcatalog.html' %}
-<!--        &lt;!&ndash; navbar &ndash;&gt;-->
-<!--        <nav class="nav container">-->
-<!--                <section class="nav_left_sec">-->
-<!--                    <img src="{% static 'store/images/logo_text.png' %}" alt="logo" class="nav_logo">-->
-<!--                    <img src="{% static 'store/images/rectangle.png' %}" alt="sq" class="nav_sq">-->
-<!--                    <div class="overlay"></div>-->
-<!--                    <ul class="nav_links">-->
-<!--                    </ul>-->
-<!--                </section>-->
-<!--                <section class="search">-->
-<!--                    <form action="" method="get">-->
-<!--                    <input placeholder="поиск..." type="text">-->
-<!--                        <button type="submit" class="search_button">-->
-<!--                            найти-->
-<!--                        </button>-->
-<!--                    </form>-->
-<!--                </section>-->
-<!--                &lt;!&ndash; cart &ndash;&gt;-->
-<!--                <section class="nav_right_sec">-->
-<!--                    <div class="cart_container">-->
-<!--                        <button class="cart_btn" id="truck">-->
-<!--                            <img src="{% static 'store/images/truck.png' %}">-->
-<!--                            <span class="indicator">Доставка</span>-->
-<!--                        </button>-->
-<!--                        <button class="cart_btn">-->
-<!--                            <img src="{% static 'store/images/bin.png' %}">-->
-<!--                            <span class="indicator">Корзина</span>-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                </section>-->
-<!--        </nav>-->
     </header>
     {% block content %}
     {% endblock %}
     <footer>
         <div class="footer_content">
             <div class="footer_text">
-                {% for m in menu %}
+                {% for m in menu_footer %}
                     {% if not forloop.last %}
                         <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
                     {% else %}
@@ -73,11 +43,15 @@
                 {% endfor %}
             </div>
             <div class="footer_icons">
-                  <ul>
-                      <li><a href="#"><img src="{% static 'store/images/telegram.png' %}" alt="telegram"/></a></li>
-                      <li><a href="#"><img src="{% static 'store/images/instagram.png' %}" alt="Instagram"/></a></li>
-                      <li><a href="#"><img src="{% static 'store/images/whatsapp.png' %}" alt="whatsapp"/></a></li>
-                  </ul>
+                <ul>
+                {% for m in menu_footer_contact %}
+                    {% if not forloop.last %}
+                      <li><a href="{% url m.url_name %}"><img src="{% static m.img %}" alt="image"/></a></li>
+                    {% else %}
+                      <li><a href="{% url m.url_name %}"><img src="{% static m.img %}" alt="image"/></a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
             </div>
             <div class="footer_bottom">
                 <p>2023 © Shopy — интернет-магазин гаджетов</p>
