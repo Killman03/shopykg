@@ -1,0 +1,20 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% load store_tags %}
+
+{% block content %}
+<main>
+    <div>
+        <div class="product_title">
+            <h1>{{ product.title }}</h1>
+            <hr class="product_line">
+        </div>
+        <div class="product_content">
+          <img src="{{ product.image.url }}" alt="{{ product.title }}">
+          <button>Описание</button>
+          <button>Купить</button>
+          <p>{{ product.content }}</p>
+        </div>
+    </div>
+</main>
+{% endblock%}
