@@ -30,7 +30,8 @@ class HomePage(ListView):
         context['menu_footer'] = menu_footer
         context['menu_footer_contact'] = menu_footer_contact
         context['title'] = 'Главная страница'
-        context['category'] = Under_category.objects.get(title='Комбо')
+        context['category_combo'] = Under_category.objects.get(title='Комбо')
+        context['category'] = Under_category.objects.get.all
         return context
 
     def get_queryset(self):
@@ -73,7 +74,7 @@ class ShowProduct(DetailView):
     context_object_name = 'product'
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['menu_header'] = menu_header
         context['menu_footer'] = menu_footer
         context['menu_footer_contact'] = menu_footer_contact
