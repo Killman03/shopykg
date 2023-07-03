@@ -1,0 +1,96 @@
+{% load static %}
+<nav class="navbar bg-body-tertiary fixed-top container">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'store/images/logo_text.png' %}"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Каталог</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          {% for n in category %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ n.name }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Для семьи</a></li>
+              <li><a class="dropdown-item" href="#">Для работы</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              ПК комплектующие
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Жесткие диски</a></li>
+              <li><a class="dropdown-item" href="#">Оперативная память</a></li>
+              <li><a class="dropdown-item" href="#">Блоки питания</a></li>
+              <li><a class="dropdown-item" href="#">Видео карты</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Для игры
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Игровые кресла</a></li>
+              <li><a class="dropdown-item" href="#">Педальные блоки</a></li>
+              <li><a class="dropdown-item" href="#">Джостики</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Акустика
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Динамики</a></li>
+              <li><a class="dropdown-item" href="#">Микрофоны</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Периферия для ПК
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Клавиатуры</a></li>
+              <li><a class="dropdown-item" href="#">Мыши</a></li>
+              <li><a class="dropdown-item" href="#">Коврики</a></li>
+              <li><a class="dropdown-item" href="#">Веб-камеры</a></li>
+            </ul>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <section class="search">
+      <form action="" method="get">
+      <input placeholder="поиск..." type="text">
+          <button type="submit" class="search_button">
+              найти
+          </button>
+      </form>
+    </section>
+    <section class="nav_right_sec">
+      <div class="cart_container">
+        {% for m in menu_header %}
+          {% if not forloop.last %}
+          <button class="cart_btn" id="truck">
+            <li><a href="{% url m.url_name %}"><img src="{% static m.img %}"></a></li>
+            <span class="indicator">{{ m.title }}</span>
+          </button>
+          {% else %}
+          <button class="cart_btn">
+            <li><a href="{% url m.url_name %}"><img src="{% static m.img %}"></a></li>
+              <span class="indicator">{{ m.title }}</span>
+          </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</nav>
