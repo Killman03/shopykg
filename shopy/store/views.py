@@ -30,8 +30,7 @@ class HomePage(ListView):
         context['menu_footer'] = menu_footer
         context['menu_footer_contact'] = menu_footer_contact
         context['title'] = 'Главная страница'
-        context['category_combo'] = Under_category.objects.get(title='Комбо')
-        context['category'] = Under_category.objects.get.all
+        context['category'] = Under_category.objects.get(title='Комбо')
         return context
 
     def get_queryset(self):
