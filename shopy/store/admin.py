@@ -10,7 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 class UndercategoryAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'is_published', 'slug', 'category_image']
+    list_display = ['id', 'title', 'is_published', 'slug', 'category_image', 'category']
     list_editable = ['is_published']
     prepopulated_fields = {'slug': ('title',)}
 

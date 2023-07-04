@@ -12,55 +12,19 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          {% for c in category %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            </a>
+            {{ c.title }}</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Для семьи</a></li>
-              <li><a class="dropdown-item" href="#">Для работы</a></li>
+              {% for i in under_category %}
+                {% if i.category == c.title %}
+                <li><a class="dropdown-item" href="#">{{ i.title }}</a></li>
+                {% endif %}
+              {% endfor %}
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              ПК комплектующие
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Жесткие диски</a></li>
-              <li><a class="dropdown-item" href="#">Оперативная память</a></li>
-              <li><a class="dropdown-item" href="#">Блоки питания</a></li>
-              <li><a class="dropdown-item" href="#">Видео карты</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Для игры
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Игровые кресла</a></li>
-              <li><a class="dropdown-item" href="#">Педальные блоки</a></li>
-              <li><a class="dropdown-item" href="#">Джостики</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Акустика
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Динамики</a></li>
-              <li><a class="dropdown-item" href="#">Микрофоны</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Периферия для ПК
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Клавиатуры</a></li>
-              <li><a class="dropdown-item" href="#">Мыши</a></li>
-              <li><a class="dropdown-item" href="#">Коврики</a></li>
-              <li><a class="dropdown-item" href="#">Веб-камеры</a></li>
-            </ul>
-          </li>
+          {% endfor %}
         </ul>
       </div>
     </div>
