@@ -1,10 +1,16 @@
     /* шапка общее */
 header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1; /* Любое положительное значение */
     width: 100%;
     left: 0px;
     top: 0px;
     height: 92px;
     background: var(--bg-color);
+    padding 10px;
     box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
 }
 
@@ -12,6 +18,12 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+}
+
+.container-fluid {
+    position: relative;
+    min-height: 69px;
 }
 
 .nav_sq{
@@ -20,10 +32,6 @@ header{
 
 .cart_container{
     padding: 0px 0px;
-}
-
-.search{
-    padding-bottom: 10px;
 }
 
 nav div button{
@@ -55,9 +63,16 @@ nav div button{
     transform: translateX(100%);
 }
 
+/* поисковая строка */
+
+.search{
+    padding-bottom: 10px;
+}
+
 form{
       position: relative;
       width: 508.96px;
+      height: 31.93px
       margin: 0 auto;
 }
 
@@ -82,17 +97,22 @@ form{
 }
 
 .cart_btn{
-    margin: 0 0 0 24px;
+    margin: 0 0 0 44px;
     background: #A9A7EB;
-    width: 64px;
-    height: 56px;
+    width: 44px;
+    height: 37px;
     border: none;
 }
-
-#truck{
+.truck{
     margin-top: 0px;
+    width: 44px;
+    height: 39px;
 }
-
+.basket{
+    margin-top: 0px;
+    width: 44px;
+    height: 37px;
+    }
 footer {
     width: 100%;
     height: auto;

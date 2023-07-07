@@ -1,57 +1,61 @@
 {% load static %}
-<nav class="navbar bg-body-tertiary fixed-top container">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'store/images/logo_text.png' %}"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Каталог</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+{% load store_tags %}
+{% load mptt_tags %}
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="wrapper">
+    <div class="container-fluid">
+      <div class="logo">
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'store/images/logo_text.png' %}"></a>
       </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          {% for c in category %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{ c.title }}</a>
-            <ul class="dropdown-menu">
-              {% for i in under_category %}
-                {% if i.category == c.title %}
-                <li><a class="dropdown-item" href="#">{{ i.title }}</a></li>
+      <div class="hamburger">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Каталог</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            {% recursetree categories %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ node.title }}</a>
+                {% if not node.is_leaf_node %}
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">{{ node.children }}</a></li>
+                </ul>
                 {% endif %}
-              {% endfor %}
-            </ul>
-          </li>
+              </li>
+            {% endrecursetree %}
+          </ul>
+        </div>
+      </div>
+      <section class="search">
+        <form action="" method="get">
+        <input placeholder="поиск..." type="text">
+            <button type="submit" class="search_button">
+                найти
+            </button>
+        </form>
+      </section>
+      <section class="nav_right_sec">
+        <div class="cart_container">
+          {% for m in menu_header %}
+            {% if not forloop.last %}
+            <button class="cart_btn" id="truck">
+              <li><a href="{% url m.url_name %}"><img src="{% static m.img %}" class="truck"></a></li>
+            </button>
+            {% else %}
+            <button class="cart_btn">
+              <li><a href="{% url m.url_name %}"><img src="{% static m.img %}" class="basket"></a></li>
+            </button>
+            {% endif %}
           {% endfor %}
-        </ul>
-      </div>
+        </div>
+      </section>
     </div>
-    <section class="search">
-      <form action="" method="get">
-      <input placeholder="поиск..." type="text">
-          <button type="submit" class="search_button">
-              найти
-          </button>
-      </form>
-    </section>
-    <section class="nav_right_sec">
-      <div class="cart_container">
-        {% for m in menu_header %}
-          {% if not forloop.last %}
-          <button class="cart_btn" id="truck">
-            <li><a href="{% url m.url_name %}"><img src="{% static m.img %}"></a></li>
-            <span class="indicator">{{ m.title }}</span>
-          </button>
-          {% else %}
-          <button class="cart_btn">
-            <li><a href="{% url m.url_name %}"><img src="{% static m.img %}"></a></li>
-              <span class="indicator">{{ m.title }}</span>
-          </button>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
   </div>
 </nav>

@@ -3,6 +3,6 @@ from store.models import *
 
 register = template.Library()
 
-@register.simple_tag(name='getarts')
-def get_articles():
-    return Articles.objects.all
+@register.simple_tag(name='getcats')
+def get_categories():
+    return Category.objects.all

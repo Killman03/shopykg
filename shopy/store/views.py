@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseNotFound, HttpResponse
 from django.views.generic import ListView
 from django.views.generic import DetailView
+from mptt.models import TreeForeignKey
+from mptt.templatetags.mptt_tags import cache_tree_children
 from .models import *
 
 menu_header = [{'title': "Доставка", 'url_name': 'delivery', 'img': 'store/images/truck.png'},
@@ -26,12 +28,11 @@ class HomePage(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['categories'] = cache_tree_children(Category.objects.all())
         context['menu_header'] = menu_header
         context['menu_footer'] = menu_footer
         context['menu_footer_contact'] = menu_footer_contact
         context['title'] = 'Главная страница'
-        context['category'] = Category.objects.all()
-        context['under_category'] = Under_category.objects.all()
         return context
 
     def get_queryset(self):
@@ -39,7 +40,7 @@ class HomePage(ListView):
 
 
 class Collections(ListView):
-    model = Under_category
+    model = Category
     template_name = 'store/collections.html'
     context_object_name = 'collections'
 
@@ -50,7 +51,7 @@ class Collections(ListView):
         return context
 
     def get_queryset(self):
-        return Under_category.objects.filter(category__slug=self.kwargs['collect_slug'], is_published=True)
+        return Category.objects.filter(category__slug=self.kwargs['collect_slug'], is_published=True)
 
 
 class Catalog(ListView):
@@ -66,7 +67,6 @@ class Catalog(ListView):
     def get_queryset(self):
         return Category.objects.filter(under_category__slug=self.kwargs['cat_slug'], is_published=True)
 
-
 class ShowProduct(DetailView):
     model = Products
     template_name = 'store/show_product.html'
@@ -80,25 +80,6 @@ class ShowProduct(DetailView):
         context['menu_footer_contact'] = menu_footer_contact
         context['title'] = str(context['product'].title)
         return context
-
-
-# def show_product(request, product_slug):
-#     product = get_object_or_404(Articles, slug=product_slug)
-#     context = {'product': product,
-#                'menu': menu,
-#                'title': product.title,
-#                'category_name': product.category}
-#
-#     return render(request, 'store/bootstrap/index.html', context=context)
-
-# def collections(request, collections_slug):
-#     collections = get_object_or_404(Under_category, slug=collections_slug)
-#     context = {'collections': collections,
-#                'menu': menu,
-#                'title': collections.title,
-#                'category_name': collections.category}
-#
-#     return render(request, 'store/collections.html', context=context)
 
 def delivery(request):
     return HttpResponse('Hi')

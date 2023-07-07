@@ -1,3 +1,4 @@
+
 * {
     scroll-padding-top: 2rem;
     scroll-behavior: smooth;
@@ -12,11 +13,7 @@
     --bg-color: #A9A7EB;
 }
 
-html{
-    height: 100%;
-}
-
-body{
+body {
     margin: 0;
     /* Растягиваем body по высоте html */
     min-height: 100%;
@@ -24,15 +21,21 @@ body{
     grid-template-rows: auto 1fr auto;
     color: var(--text-color);
     position: relative;
-    max-width: 1440px;
     width: 100%;
     background-color: #A9A7EB;
     text-decoration: none;
+    min-width: 1200px;
 }
 
 /* container */
-.container{
+.container {
     max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.wrapper {
+    width: 1237px;
     margin: 0 auto;
     position: relative;
 }
