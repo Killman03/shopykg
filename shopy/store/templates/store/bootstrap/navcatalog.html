@@ -1,13 +1,16 @@
 {% load static %}
 {% load store_tags %}
 {% load mptt_tags %}
+<header>
 <nav class="navbar bg-body-tertiary fixed-top">
   <div class="wrapper">
     <div class="container-fluid">
       <div class="logo">
         <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'store/images/logo_text.png' %}"></a>
       </div>
-      <div class="hamburger">
+      <div class="ham
+
+      burger">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,3 +62,4 @@
     </div>
   </div>
 </nav>
+</header>
