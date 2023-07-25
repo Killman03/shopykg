@@ -42,7 +42,7 @@ class Category(MPTTModel):
         return reverse('category', kwargs={'undercategory_slug': self.slug})
 
 
-class Products(models.Model):
+class Product(models.Model):
     category = models.ForeignKey(Category, default=1, on_delete=models.PROTECT)
     title = models.CharField('Название', max_length=30, null=False, blank=False)
     slug = models.SlugField(max_length=150, unique=True, db_index=True, verbose_name='URL')

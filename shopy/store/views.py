@@ -22,13 +22,13 @@ menu_footer_contact = [{'url_name': 'delivery', 'img': 'store/images/telegram.pn
 
 
 class HomePage(ListView):
-    model = Products
+    model = Product
     template_name = 'store/home.html'
     context_object_name = 'products'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = cache_tree_children(Category.objects.all())
+        context['category'] = Category.objects.all()
         context['menu_header'] = menu_header
         context['menu_footer'] = menu_footer
         context['menu_footer_contact'] = menu_footer_contact
@@ -36,7 +36,7 @@ class HomePage(ListView):
         return context
 
     def get_queryset(self):
-        return Products.objects.filter(is_published=True)
+        return Product.objects.filter(is_published=True)
 
 
 class Collections(ListView):
@@ -68,7 +68,7 @@ class Catalog(ListView):
         return Category.objects.filter(under_category__slug=self.kwargs['cat_slug'], is_published=True)
 
 class ShowProduct(DetailView):
-    model = Products
+    model = Product
     template_name = 'store/show_product.html'
     slug_url_kwarg = 'product_slug'
     context_object_name = 'product'
@@ -82,7 +82,7 @@ class ShowProduct(DetailView):
         return context
 
 def delivery(request):
-    return HttpResponse('Hi')
+    return render(request, 'store/delivery.html')
 
 
 def profile(request):

@@ -1,6 +1,6 @@
 {% load static %}
 {% load store_tags %}
-{% load mptt_tags %}
+
 <header class="header">
 <nav class="navbar bg-body-tertiary fixed-top">
   <div class="wrapper">
@@ -8,9 +8,7 @@
       <div class="logo">
         <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'store/images/logo_text.png' %}"></a>
       </div>
-      <div class="ham
-
-      burger">
+      <div class="hamburger">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,13 +20,13 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            {% recursetree categories %}
+            {% recursetree category %}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{ node.title }}</a>
                 {% if not node.is_leaf_node %}
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">{{ node.children }}</a></li>
+                    <li><a class="dropdown-item" href="#">{{ children }}</a></li>
                 </ul>
                 {% endif %}
               </li>
